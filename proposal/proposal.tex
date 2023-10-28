@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+
+%% preamble: Keep it clean; only include those you need
+\usepackage{amsmath}
+\usepackage[margin = 1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{natbib}
+
+% for space filling
+\usepackage{lipsum}
+% highlighting hyper links
+\usepackage[colorlinks=true, citecolor=blue]{hyperref}
+
+
+%% meta data
+
+\title{Proposal: Block Bootstrap for the Kolmogorov-Smirnov Test}
+\author{Mathew Chandy\\
+  Department of Statistics\\
+  University of Connecticut
+}
+
+\begin{document}
+\maketitle
+
+
+\paragraph{Introduction}
+%Background about your research; touch the three questions to be addressed in an
+%introduction; cite relevant refernces~\citep[e.g.,][]{dwivedi2017analysis}.
+The Kolmogorov-Smirnov (KS) test is a useful goodness-of-fit statistic. It 
+can be used to see if a population follows a hypothesized distribution and has 
+and can be applied to a variety of fields. It has
+been used to analyze the random distribution of cosmic microwave background 
+radiation \citep{naess2012application}. A common misuse of the KS test is when
+the hypothesized distribution has unspecified parameters. 
+\citet{babu2004goodness} approaches this scenario using basic 
+non-parametric bootstrap. There is also the scenario where both the hypothesized 
+distribution has unspecified parameters and additionally the data are 
+serially dependent. \citet{zeimbekakis2022misuses} demonstrates a remedy for
+this scenario using semi-parametric bootstrap. This study aims to address this
+scenario with non-parametric block bootstrap.
+
+
+
+
+\paragraph{Specific Aims}
+%Formulate your research question;
+%translate your research question into statistical/data science questions
+Can the Kolmogorov-Smirnov test using non-parametric block bootstrap
+hold its size under the null hypothesis and is it powerful under the alternate 
+hypothesis, even when the data is serially dependent?
+
+
+
+\paragraph{Data}
+%Hopefully, you have identified the data needed for your project. Give a
+%description about it.
+The data for this project will be generated in R. 
+First, we must show that the method works under the null hypothesis. In this 
+case for example, we would use the method on data generated from a simulation
+of an AR(1) process with an underlying marginal $N(8,8)$ distribution given the 
+null hypothesis that the data is normally distributed. We could do a similar 
+procedure where the underlying marginal distribution and
+the null distribution are both $\Gamma(8,1)$
+Then, we must show that the method works when the null hypothesis is false.
+In this case for example, we would use a similar procedure where the underlying
+marginal distribution is $N(8,8)$ and the null distribution is $\Gamma(8,1)$,
+or vice versa.
+
+
+
+\paragraph{Research Design and Methods}
+%What design or methods will you use?
+%Cite relevant references~\citep[e.g.,][]{wild2004global}.
+In the case that the null hypothesis is true:
+we will approximate the KS statistic for a sample using 
+block bootstrap with $B$ bootstrap samples. We will replicate this (new 
+generated sample + block bootstrap KS test procedure) 1000 times, and assess 
+if the p-values for all the tests are uniformally distributed. If this is the 
+case, we can say
+that the method works under the null hypothesis.
+In the case that the null hypothesis is false:
+we will approximate the KS statistic for a sample using 
+block bootstrap with $B$ bootstrap samples. We will replicate this (new 
+generated sample + block bootstrap KS test procedure) 1000 times, and assess
+how reliably the test rejects the null hypothesis (ideally this should be 
+100\% of the time).
+
+
+
+
+\paragraph{Discussion}
+%What are the most challenge parts of the task?
+%What are the limitations of your work? What is your fall-back plan if
+%something unexpected happens?
+The most challenging part of this task will be finding the sample size at which
+the method reliably works when the null is true versus when the null is false.
+This work maybe limited by some general drawbacks of block 
+bootstrap in terms of how effectively it imitates the data-generating 
+process, as noted by \citet{buhlmann2002bootstraps}. Because the data for this
+study is simulated through R, if something unexpected happens, it is not the end
+of the world because I can just check my code. If after having verified my 
+code, I find that the same unexpected thing is happening, it is an interesting 
+finding that I can include in the paper/
+
+
+
+
+
+\bibliography{../manuscript/citations}
+\bibliographystyle{chicago}
+
+\end{document}
