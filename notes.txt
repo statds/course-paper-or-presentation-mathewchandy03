@@ -1,0 +1,30 @@
+9/27 Notes
+- Make sure that method works under null hypothesis
+- Add manuscript introduction, method with equations
+
+10/4 Notes
+- Follow Anthony's procedure with block bootstrap
+- Review Babu and Rao
+- May need large sample size
+
+10/11 Notes
+- Try larger sample size
+- Try with dependent data
+- Begin writing paper (review notes)
+- Methods
+
+10/18 Notes
+- For different alphas, look at empirical level and nominal level
+- Zoomed in plot or histograms
+- Try 800
+- Look at annual precipitation in Mansfield
+- Financial time series data (Stock returns of Microsoft)
+- Daily closing price
+- tseries R package
+
+10/25 Notes
+- Confidence interval for rate of rejection
+- Try n = 3200
+- Test that it's from normal distribution (data is from t distribution with certain dfs)
+- hist.quote
+- Microsoft data has heavier tail than normal, so test that it is normal (which we expect to reject)
